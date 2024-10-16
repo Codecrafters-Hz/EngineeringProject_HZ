@@ -1,7 +1,9 @@
 from user_interface.ui import UserInterface
-
+import tkinter as tk
 def main():
-    ui = UserInterface()
+    root = tk.Tk()
+    ui = UserInterface(root)
+    root.mainloop()
     ui.display_force_values()
     ui.display_average_force()
     ui.display_max_force()

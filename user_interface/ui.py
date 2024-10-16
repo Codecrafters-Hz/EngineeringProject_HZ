@@ -1,12 +1,21 @@
+import tkinter as tk
 from signal_processing.simulator import ForceSimulator
 
 class UserInterface:
-    def __init__(self):
+    def __init__(self, root):
         self.simulator = ForceSimulator()
 
+        root.geometry("900x450")
+        root.title("CodeCrafters")
+        self.button = tk.Button(root, text="Show Sample Force Value", command=self.display_force_values)
+        self.button.pack(pady=10)
+        self.force_label = tk.Label(root, text="")
     def display_force_values(self):
         force_values = self.simulator.simulate_force_values()
-        print("Simulated Force Values:", force_values)
+
+        self.force_label.pack(pady=10)
+        self.force_label.config(text=f"Simulated Force Values: {force_values}")
+
 
     def display_average_force(self):
         avg_force = self.simulator.average_force()
